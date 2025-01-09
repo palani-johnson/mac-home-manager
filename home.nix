@@ -15,6 +15,7 @@ in {
       docker-credential-helpers
       python3
       colima
+      kubectl
     ];
 
     sessionVariables = sessionVariables;
