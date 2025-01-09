@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   sessionVariables = {
     EDITOR = "code";
   };
@@ -16,7 +12,9 @@ in {
       alejandra
       imagemagick
       docker
+      docker-credential-helpers
       python3
+      colima
     ];
 
     sessionVariables = sessionVariables;
