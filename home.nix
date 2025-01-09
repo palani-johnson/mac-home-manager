@@ -55,7 +55,7 @@ in {
       settings = {
         "$schema" = "https://starship.rs/config-schema.json";
 
-        format = "$username$hostname$directory$fill$git_branch$git_state$git_status$nix_shell$cmd_duration$line_break$sudo$status$shell$character";
+        format = "$username$hostname$directory$git_branch$git_state$git_status$nix_shell$cmd_duration$line_break$sudo$status$shell$character";
 
         fill.disabled = false;
         fill.symbol = " ";
