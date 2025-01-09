@@ -12,7 +12,7 @@ $env.config = {
         file_format: sqlite
         max_size: 100_000
         sync_on_enter: true
-        isolation: false
+        isolation: true
     }
 
     completions: {
