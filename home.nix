@@ -83,5 +83,9 @@ in {
       enableNushellIntegration = true;
       enableZshIntegration = true;
     };
+
+    btop = {
+      enable = true;
+    };
   };
 }
