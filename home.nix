@@ -37,6 +37,7 @@ in {
         "--vz-rosetta"
         "--memory"
         "4"
+        "--foreground"
       ];
       RunAtLoad = true; # Runs at login
       LaunchOnlyOnce = true; # Don't restart if already running
