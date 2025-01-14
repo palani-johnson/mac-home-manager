@@ -25,27 +25,6 @@ in {
     preferXdgDirectories = true;
   };
 
-  launchd.enable = true;
-  launchd.agents."com.${me}.colima" = {
-    enable = true;
-    config = {
-      Label = "com.${me}.colima";
-      Program = "${pkgs.colima}/bin/colima";
-      ProgramArguments = [
-        "start"
-        "--vm-type=vz"
-        "--vz-rosetta"
-        "--memory"
-        "4"
-        "--foreground"
-      ];
-      RunAtLoad = true; # Runs at login
-      LaunchOnlyOnce = true; # Don't restart if already running
-      KeepAlive = false; # Don't restart if dies
-      WorkingDirectory = home;
-    };
-  };
-
   xdg.enable = true;
 
   programs = {
