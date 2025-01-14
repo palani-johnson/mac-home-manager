@@ -73,6 +73,9 @@ in {
       enableNushellIntegration = true;
       enableZshIntegration = true;
       silent = true;
+      config = {
+        global.warn_timeout = "1m";
+      };
     };
 
     carapace = {
