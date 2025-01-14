@@ -1,11 +1,14 @@
 {pkgs, ...}: let
+  me = "pjohnso3";
+  home = "/Users/${me}";
+
   sessionVariables = {
     EDITOR = "code";
   };
 in {
   home = {
-    username = "pjohnso3";
-    homeDirectory = "/Users/pjohnso3";
+    username = me;
+    homeDirectory = home;
     stateVersion = "24.11";
     packages = with pkgs; [
       nixd
@@ -20,6 +23,26 @@ in {
 
     sessionVariables = sessionVariables;
     preferXdgDirectories = true;
+  };
+
+  launchd.enable = true;
+  launchd.agents."com.${me}.colima" = {
+    enable = true;
+    config = {
+      Label = "com.${me}.colima";
+      Program = "${pkgs.colima}/bin/colima";
+      ProgramArguments = [
+        "start"
+        "--vm-type=vz"
+        "--vz-rosetta"
+        "--memory"
+        "4"
+      ];
+      RunAtLoad = true; # Runs at login
+      LaunchOnlyOnce = true; # Don't restart if already running
+      KeepAlive = false; # Don't restart if dies
+      WorkingDirectory = home;
+    };
   };
 
   xdg.enable = true;
