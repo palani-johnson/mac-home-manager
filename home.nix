@@ -11,14 +11,23 @@ in {
     homeDirectory = home;
     stateVersion = "24.11";
     packages = with pkgs; [
+      # nix
       nixd
       alejandra
-      imagemagick
+
+      # docker
       docker
       docker-credential-helpers
-      python3
       colima
       kubectl
+
+      # python
+      (python3.withPackages (p: with p; [ipykernel]))
+      ruff
+
+      # node
+      nodejs
+      nodePackages.prettier
     ];
 
     sessionVariables = sessionVariables;
