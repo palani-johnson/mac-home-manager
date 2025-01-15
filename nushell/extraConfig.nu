@@ -29,6 +29,31 @@ $env.config = {
     }
 }
 
+# Update nix system and user configurations
+def update-nix [
+    --system (-s) # Update system configuration
+    --user (-u) # Update user configuration
+] {
+    if not $system and not $user {
+        return "Please specify --system (-s) or --user (-u)"
+    }
+
+    if $system {
+        let darwin_config = $"($env.XDG_CONFIG_HOME)/nix-darwin"
+        nix flake update --flake $darwin_config | print
+        darwin-rebuild switch --flake $darwin_config | print
+
+    }
+
+    if $user {
+        let home_config = $"($env.XDG_CONFIG_HOME)/home-manager"
+        nix flake update --flake $home_config | print
+        home-manager switch | print
+    }
+}
+
+
+
 # Dev shell patches
 
 alias nix-shell = nix-shell --run nu
