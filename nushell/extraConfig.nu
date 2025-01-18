@@ -33,6 +33,7 @@ $env.config = {
 def update-nix [
     --system (-s) # Update system configuration
     --user (-u) # Update user configuration
+    --garbage (-g) # Collect garbage
 ] {
     if not $system and not $user {
         return "Please specify --system (-s) or --user (-u)"
@@ -49,6 +50,11 @@ def update-nix [
         let home_config = $"($env.XDG_CONFIG_HOME)/home-manager"
         nix flake update --flake $home_config | print
         home-manager switch | print
+    }
+
+    if $garbage {
+        print "Collecting garbage..."
+        nix-collect-garbage
     }
 }
 
