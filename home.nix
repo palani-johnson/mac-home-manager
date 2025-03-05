@@ -87,6 +87,9 @@ in {
       silent = true;
       config = {
         global.warn_timeout = "1m";
+        whitelist.prefix = [
+          "~/Projects"
+        ];
       };
     };
 
