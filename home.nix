@@ -32,6 +32,12 @@ in {
 
     sessionVariables = sessionVariables;
     preferXdgDirectories = true;
+
+    file.".config/colima" = {
+      source = ./colima;
+      force = true;
+      recursive = true;
+    };
   };
 
   xdg.enable = true;

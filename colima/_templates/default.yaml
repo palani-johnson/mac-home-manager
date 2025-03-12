@@ -1,0 +1,10 @@
+
+cpu: 2
+disk: 100
+memory: 6
+arch: aarch64
+vmType: vz
+rosetta: true
+
+kubernetes:
+  enabled: false
