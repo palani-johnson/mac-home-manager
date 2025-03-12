@@ -39,6 +39,12 @@ in {
   programs = {
     home-manager.enable = true;
 
+    # mostly used for completions
+    fish = {
+      enable = true;
+      generateCompletions = true;
+    };
+
     zsh = {
       enable = true;
       sessionVariables = sessionVariables;
@@ -63,8 +69,6 @@ in {
 
     starship = {
       enable = true;
-      enableNushellIntegration = true;
-      enableZshIntegration = true;
       settings = {
         "$schema" = "https://starship.rs/config-schema.json";
 
@@ -82,8 +86,6 @@ in {
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableNushellIntegration = true;
-      enableZshIntegration = true;
       silent = true;
       config = {
         global.warn_timeout = "1m";
@@ -91,12 +93,6 @@ in {
           "~/Projects"
         ];
       };
-    };
-
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
-      enableZshIntegration = true;
     };
 
     btop = {

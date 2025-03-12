@@ -23,7 +23,11 @@ $env.config = {
         external: {
             enable: false
             max_results: 100
-            completer: null
+            completer: { |spans|
+                fish --command $'complete "--do-complete=($spans | str join " ")"'
+                | from tsv --flexible --noheaders --no-infer
+                | rename value description
+            }
         }
         use_ls_colors: true
     }
@@ -57,7 +61,6 @@ def update-nix [
         nix-collect-garbage
     }
 }
-
 
 
 # Dev shell patches
