@@ -4,6 +4,9 @@
 
   sessionVariables = {
     EDITOR = "code";
+    # XDG fixes
+    GOPATH = "$XDG_DATA_HOME/go";
+    GOMODCACHE = "$XDG_CACHE_HOME/go/mod";
   };
 in {
   home = {
@@ -71,6 +74,7 @@ in {
       userName = "Palani Johnson";
       userEmail = "palanijohnson@gmail.com";
       extraConfig.init.defaultBranch = "main";
+      extraConfig.core.pager = "cat";
     };
 
     starship = {
