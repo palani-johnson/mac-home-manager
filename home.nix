@@ -33,8 +33,7 @@ in {
       nodePackages.prettier
 
       # azure
-      azure-cli
-      azure-cli-extensions.containerapp
+      (azure-cli.withExtensions [azure-cli.extensions.containerapp])
     ];
 
     sessionVariables = sessionVariables;
