@@ -31,6 +31,9 @@ in {
       # node
       nodejs
       nodePackages.prettier
+
+      # azure
+      azure-cli
     ];
 
     sessionVariables = sessionVariables;
