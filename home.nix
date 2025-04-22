@@ -34,7 +34,7 @@ in {
 
       # azure
       azure-cli
-      pkgs.azure-cli-extensions.containerapp
+      azure-cli-extensions.containerapp
     ];
 
     sessionVariables = sessionVariables;
