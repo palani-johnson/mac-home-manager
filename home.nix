@@ -13,27 +13,27 @@ in {
     username = me;
     homeDirectory = home;
     stateVersion = "24.11";
-    packages = with pkgs; [
+    packages = [
       # nix
-      nixd
-      alejandra
+      pkgs.nixd
+      pkgs.alejandra
 
       # docker
-      docker
-      docker-credential-helpers
-      colima
-      kubectl
+      pkgs.docker
+      pkgs.docker-credential-helpers
+      pkgs.colima
+      pkgs.kubectl
 
       # python
-      (python3.withPackages (p: with p; [ipykernel]))
-      ruff
+      (pkgs.python3.withPackages (p: [p.ipykernel]))
+      pkgs.ruff
 
       # node
-      nodejs
-      nodePackages.prettier
+      pkgs.nodejs
+      pkgs.nodePackages.prettier
 
       # azure
-      (azure-cli.withExtensions [azure-cli.extensions.containerapp])
+      (pkgs.azure-cli.withExtensions [pkgs.azure-cli.extensions.containerapp])
     ];
 
     sessionVariables = sessionVariables;
@@ -62,7 +62,7 @@ in {
       sessionVariables = sessionVariables;
       dotDir = ".config/zsh";
       history.path = "$HOME/.cache/zsh/history";
-      initExtra = builtins.readFile ./zsh/initExtra.zsh;
+      initContent = builtins.readFile ./zsh/initExtra.zsh;
       enableCompletion = true;
       prezto.enable = true;
     };
