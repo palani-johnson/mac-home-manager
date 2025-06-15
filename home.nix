@@ -15,7 +15,7 @@ in {
     stateVersion = "24.11";
     packages = [
       # nix
-      pkgs.nixd
+      pkgs.nil
       pkgs.alejandra
 
       # docker
@@ -44,6 +44,8 @@ in {
       force = true;
       recursive = true;
     };
+
+    shell.enableShellIntegration = true;
   };
 
   xdg.enable = true;
