@@ -9,6 +9,8 @@
     GOMODCACHE = "$XDG_CACHE_HOME/go/mod";
   };
 in {
+  nixpkgs.config.allowUnfree = true;
+
   home = {
     username = me;
     homeDirectory = home;
