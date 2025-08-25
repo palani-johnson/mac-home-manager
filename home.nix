@@ -4,9 +4,13 @@
 
   sessionVariables = {
     EDITOR = "code";
+
     # XDG fixes
     GOPATH = "$XDG_DATA_HOME/go";
     GOMODCACHE = "$XDG_CACHE_HOME/go/mod";
+
+    # Bitwarden SSH Agent
+    SSH_AUTH_SOCK = "/Users/pjohnso3/.bitwarden-ssh-agent.sock";
   };
 in {
   nixpkgs.config.allowUnfree = true;
@@ -30,12 +34,22 @@ in {
       (pkgs.python3.withPackages (p: [p.ipykernel]))
       pkgs.ruff
 
+      # just
+      pkgs.just
+
       # node
       pkgs.nodejs
       pkgs.nodePackages.prettier
+      pkgs.pnpm
+
+      # terraform
+      pkgs.terraform
 
       # azure
       (pkgs.azure-cli.withExtensions [pkgs.azure-cli.extensions.containerapp])
+
+      # bitwarden
+      pkgs.bitwarden-desktop
     ];
 
     sessionVariables = sessionVariables;
@@ -54,12 +68,7 @@ in {
 
   programs = {
     home-manager.enable = true;
-
-    # mostly used for completions
-    fish = {
-      enable = true;
-      generateCompletions = true;
-    };
+    carapace.enable = true;
 
     zsh = {
       enable = true;
@@ -74,6 +83,7 @@ in {
     nushell = {
       enable = true;
       extraConfig = builtins.readFile ./nushell/extraConfig.nu;
+      environmentVariables = sessionVariables;
     };
 
     git = {
